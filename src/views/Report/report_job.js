@@ -214,13 +214,13 @@ function Report_budget() {
       {
         label: "Detail",
         field: "action",
-        width: 100,
+        width: 150,
         align: "center",
       },
       {
         label: "status",
         field: "action_status",
-        width: 140,
+        width: 150,
         align: "center",
       },
       {
@@ -238,7 +238,7 @@ function Report_budget() {
       {
         label: "ฝ่ายที่ขอ",
         field: "job_department",
-        width: 100,
+        width: 150,
         align: "center",
       },
       {
@@ -250,19 +250,19 @@ function Report_budget() {
       {
         label: "ราคา",
         field: "job_project_price",
-        width: 100,
+        width: 150,
         align: "center",
       },
       {
         label: "ระยะเวลา",
         field: "job_time",
-        width: 100,
+        width: 150,
         align: "center",
       },
       {
         label: "วันที่ขอ job",
         field: "job_date_request",
-        width: 150,
+        width: 180,
         align: "center",
       },
 

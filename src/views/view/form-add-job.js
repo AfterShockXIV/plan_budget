@@ -398,7 +398,7 @@ export default function From_add_plan() {
 
                 <Box
                   sx={{
-                    "& > :not(style)": { m: 1, width: "23%", fontSize: "20px" },
+                    "& > :not(style)": { m: 1, width: "23%", fontSize: "14px" },
                   }}
                   autoComplete="off"
                 >
@@ -489,7 +489,7 @@ export default function From_add_plan() {
 
                 <Box
                   sx={{
-                    "& > :not(style)": { m: 1, width: "23%", fontSize: "20px" },
+                    "& > :not(style)": { m: 1, width: "23%", fontSize: "14px" },
                   }}
                   autoComplete="off"
                 >
@@ -969,7 +969,7 @@ export default function From_add_plan() {
                       <br />
                       <div className="row">
                         <div
-                          style={{ paddingRight: "10px", paddingLeft: "20px" }}
+                          style={{ paddingRight: "10px", paddingLeft: "14px" }}
                         >
                           <br />
                         </div>
