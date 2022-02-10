@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { MDBDataTableV5 } from "mdbreact";
 import Button from "@mui/material/Button";
-import { Card, CardBody } from "reactstrap";
+import { Card, CardBody, Form } from "reactstrap";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
@@ -141,9 +141,9 @@ export default function Check_job(props) {
   const [inputList, setInputList] = useState([
     {
       detail_itempr_job: "1",
-      detail_list_job: "-",
-      detail_qty_job: 0,
-      detail_price_job: 0,
+      detail_list_job: "",
+      detail_qty_job: "",
+      detail_price_job: "",
       detail_sum_job: 0,
       //new
       detail_unit_job: "EA",
@@ -237,9 +237,9 @@ export default function Check_job(props) {
       ...inputList,
       {
         detail_itempr_job: item_pr,
-        detail_list_job: "-",
-        detail_qty_job: 0,
-        detail_price_job: 0,
+        detail_list_job: "",
+        detail_qty_job: "",
+        detail_price_job: "",
         detail_sum_job: 0,
         //new
         detail_unit_job: "EA",
@@ -380,7 +380,7 @@ export default function Check_job(props) {
       detail_sum_job: data.detail_sum_job
         .toString()
         .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,"),
-      detail_unit_job: data.detail_unit_label,
+      detail_unit_job: data.detail_unit_job,
       detail_CURR_job: data.detail_CURR_job,
       detail_Priceperunit_job: data.detail_Priceperunit_job,
       detail_ACCT_job: data.detail_ACCT_job,
@@ -505,7 +505,7 @@ export default function Check_job(props) {
       {
         label: "ราคาต่อหน่วย",
         field: "detail_price_job",
-        width: 100,
+        width: 150,
         align: "center",
       },
       {
@@ -876,16 +876,16 @@ export default function Check_job(props) {
                           </Button>
                           &nbsp;&nbsp;
                           <a href={server + "/sig_AMD_page/" + job_run_id}>
-                           
-                              <Button
-                                className="mr10"
-                                size="small"
-                                variant="contained"
-                                color="warning"
-                              >
-                                AMD ส่วนงานผลิต เซ็นยอมรับ
-                              </Button>
-                            
+
+                            <Button
+                              className="mr10"
+                              size="small"
+                              variant="contained"
+                              color="warning"
+                            >
+                              AMD ส่วนงานผลิต เซ็นยอมรับ
+                            </Button>
+
                           </a>
                         </div>
                       );
@@ -919,16 +919,16 @@ export default function Check_job(props) {
                           </Button>
                           &nbsp;&nbsp;
                           <a href={server + "/sig_AMD2_page/" + job_run_id}>
-                           
-                              <Button
-                                className="mr10"
-                                size="small"
-                                variant="contained"
-                                color="warning"
-                              >
-                                AMD ส่วนงานสนับสนุน เซ็นยอมรับ
-                              </Button>
-                            
+
+                            <Button
+                              className="mr10"
+                              size="small"
+                              variant="contained"
+                              color="warning"
+                            >
+                              AMD ส่วนงานสนับสนุน เซ็นยอมรับ
+                            </Button>
+
                           </a>
                         </div>
                       );
@@ -959,16 +959,16 @@ export default function Check_job(props) {
                         </Button>
                         &nbsp;&nbsp;
                         <a href={server + "/sig_AMD2_page/" + job_run_id}>
-                         
-                            <Button
-                              className="mr10"
-                              size="small"
-                              variant="contained"
-                              color="warning"
-                            >
-                              AMD ส่วนงานสนับสนุน เซ็นยอมรับ
-                            </Button>
-                         
+
+                          <Button
+                            className="mr10"
+                            size="small"
+                            variant="contained"
+                            color="warning"
+                          >
+                            AMD ส่วนงานสนับสนุน เซ็นยอมรับ
+                          </Button>
+
                         </a>
                       </div>
                     );
@@ -998,16 +998,16 @@ export default function Check_job(props) {
                         </Button>
                         &nbsp;&nbsp;
                         <a href={server + "/sig_MD_page/" + job_run_id}>
-                         
-                            <Button
-                              className="mr10"
-                              size="small"
-                              variant="contained"
-                              color="warning"
-                            >
-                              MD เซ็นยอมรับ
-                            </Button>
-                        
+
+                          <Button
+                            className="mr10"
+                            size="small"
+                            variant="contained"
+                            color="warning"
+                          >
+                            MD เซ็นยอมรับ
+                          </Button>
+
                         </a>
                       </div>
                     );
@@ -1041,49 +1041,49 @@ export default function Check_job(props) {
                             HEADER
                           </Button>
                           &nbsp;&nbsp;
-                         
-                            <Button
-                              className="mr10"
-                              size="small"
-                              variant="contained"
-                              color="warning"
-                              onClick={() => {
-                                handleOpen_status();
-                              }}
-                            >
-                              APPROVE
-                            </Button>
-                         
+
+                          <Button
+                            className="mr10"
+                            size="small"
+                            variant="contained"
+                            color="warning"
+                            onClick={() => {
+                              handleOpen_status();
+                            }}
+                          >
+                            APPROVE
+                          </Button>
+
                         </div>
                       );
                     }
-                  }else{
-                    return(
-                    <div>
-                    <Button
-                      className="mr10"
-                      size="small"
-                      onClick={() => {
-                        handleOpen_edit_header_check();
-                        setPrtype_job(main_job.pr_type);
-                        setFactory(main_job.factory);
-                        setJob_project_name_edit(main_job.job_project_name);
-                        setLearn_job_edit(main_job.learn_job);
-                        setLearn_job_copy_edit(main_job.learn_job_copy);
-                        setDetail_job_edit(main_job.detail_job);
-                        setJob_date_request_edit(main_job.job_date_request);
-                        setJob_time_edit(main_job.job_time);
-                        setPrtype_job_edit(main_job.pr_type);
-                        setFactory_edit(main_job.factory);
-                      }}
-                      variant="contained"
-                      color="info"
-                    >
-                      HEADER
-                    </Button>
-                    &nbsp;&nbsp;
-                    </div>
-                )
+                  } else {
+                    return (
+                      <div>
+                        <Button
+                          className="mr10"
+                          size="small"
+                          onClick={() => {
+                            handleOpen_edit_header_check();
+                            setPrtype_job(main_job.pr_type);
+                            setFactory(main_job.factory);
+                            setJob_project_name_edit(main_job.job_project_name);
+                            setLearn_job_edit(main_job.learn_job);
+                            setLearn_job_copy_edit(main_job.learn_job_copy);
+                            setDetail_job_edit(main_job.detail_job);
+                            setJob_date_request_edit(main_job.job_date_request);
+                            setJob_time_edit(main_job.job_time);
+                            setPrtype_job_edit(main_job.pr_type);
+                            setFactory_edit(main_job.factory);
+                          }}
+                          variant="contained"
+                          color="info"
+                        >
+                          HEADER
+                        </Button>
+                        &nbsp;&nbsp;
+                      </div>
+                    )
                   }
                 })()}
               </div>
@@ -1125,212 +1125,237 @@ export default function Check_job(props) {
                           return (
                             <Card>
                               <CardBody>
-                                <div>
-                                  <br />
+                                <Form onSubmit={add_detail_job}>
+                                  <div>
+                                    <br />
 
-                                  <Button
-                                    variant="contained"
-                                    onClick={() => handleAddClick(i)}
-                                    size="small"
-                                  >
-                                    {" "}
-                                    Add{" "}
-                                  </Button>
-                                </div>
-                                <Box
-                                  component="form"
-                                  sx={{
-                                    "& > :not(style)": { m: 1, width: "20%" },
-                                  }}
-                                  noValidate
-                                  autoComplete="off"
-                                >
-                                  <TextField
-                                    size="small"
-                                    color="warning"
-                                    variant="standard"
-                                    label="ลำดับ"
-                                    value={i + 1}
-                                    style={{ width: "5%" }}
-                                    focused
-                                  />
-
-                                  <TextField
-                                    size="small"
-                                    color="info"
-                                    variant="standard"
-                                    label="รายการ"
-                                    name="detail_list_job"
-                                    value={x.detail_list_job}
-                                    style={{ width: "30%" }}
-                                    onChange={(e) => handleInputChange(e, i)}
-                                  />
-                                  <TextField
-                                    style={{ width: "10%" }}
-                                    size="small"
-                                    color="info"
-                                    variant="standard"
-                                    label="จำนวน"
-                                    type="number"
-                                    name="detail_qty_job"
-                                    value={x.detail_qty_job}
-                                    onChange={(e) => handleInputChange(e, i)}
-                                  />
-                                  <TextField
-                                    style={{ width: "10%" }}
-                                    size="small"
-                                    color="info"
-                                    variant="standard"
-                                    label="ราคาต่อหน่วย"
-                                    type="number"
-                                    name="detail_price_job"
-                                    value={x.detail_price_job}
-                                    onChange={(e) => handleInputChange(e, i)}
-                                  />
-                                  <TextField
-                                    style={{ width: "10%" }}
-                                    color="info"
-                                    variant="standard"
-                                    label="รวม"
-                                    type="number"
-                                    size="small"
-                                    name="detail_sum_job"
-                                    value={x.detail_sum_job}
-                                    InputProps={{
-                                      readOnly: true,
-                                    }}
-                                  />
-
-                                  <TextField
-                                    style={{ width: "5%" }}
-                                    color="info"
-                                    variant="standard"
-                                    label="Price per unit"
-                                    size="small"
-                                    name="detail_Priceperunit_job"
-                                    value={x.detail_Priceperunit_job}
-                                    onChange={(e) => handleInputChange(e, i)}
-                                  />
-                                  <TextField
-                                    id="standard-select-currency"
-                                    select
-                                    style={{ width: "6%" }}
-                                    label="ACCT"
-                                    value={x.detail_ACCT_job}
-                                    onChange={(e) => {
-                                      handleInputChange_ACCT(e, i);
-                                    }}
-                                    variant="standard"
-                                    size="small"
-                                    color="warning"
-                                    name="detail_ACCT_job"
-                                  >
-                                    {ACCT.map((option) => (
-                                      <MenuItem
-                                        key={option.value}
-                                        value={option.value}
-                                      >
-                                        {option.label}
-                                      </MenuItem>
-                                    ))}
-                                  </TextField>
-                                  <TextField
-                                    style={{ width: "15%" }}
-                                    color="info"
-                                    variant="standard"
-                                    label="Material"
-                                    size="small"
-                                    name="detail_material_job"
-                                    value={x.detail_material_job}
-                                    onChange={(e) => handleInputChange(e, i)}
-                                  />
-
-                                  <div
-                                    className="row"
-                                    style={{ width: "100%" }}
-                                  >
-                                    <div className="col-2">
-                                      <Select
-                                        size="small"
-                                        placeholder="THB"
-                                        class="form-control form-control-sm "
-                                        options={currData}
-                                        name="detail_CURR_job"
-                                        onChange={(e) => {
-                                          handleInputChange_CURR(e, i);
-                                        }}
-                                      />
-                                    </div>
-
-                                    <div className="col-2">
-                                      <Select
-                                        size="small"
-                                        placeholder="each"
-                                        class="form-control form-control-sm"
-                                        options={data_sap_filter}
-                                        name="detail_unit_job"
-                                        onChange={(e) => {
-                                          handleInputChange_select(e, i);
-                                        }}
-                                      />
-                                    </div>
-
-                                    <div className="col-2">
-                                      <Select
-                                        size="small"
-                                        placeholder={x.detail_GL_label}
-                                        class="form-control form-control-sm "
-                                        options={glData}
-                                        name="detail_GL_job"
-                                        onChange={(e) => {
-                                          handleInputChange_GL(e, i);
-                                        }}
-                                      />
-                                    </div>
-
-                                    <div className="col-3">
-                                      <Select
-                                        size="small"
-                                        placeholder={x.detail_MatGroup_label}
-                                        class="form-control form-control-sm "
-                                        options={matgroupData}
-                                        name="detail_MatGroup_job"
-                                        defaultValue=""
-                                        onChange={(e) => {
-                                          handleInputChange_Matgroup(e, i);
-                                        }}
-                                      />
-                                    </div>
-                                    <div className="col-3">
-                                      <Select
-                                        size="small"
-                                        placeholder="COST CENTER"
-                                        class="form-control form-control-sm "
-                                        options={CostCenter}
-                                        name="detail_CostCenter_job"
-                                        onChange={(e) => {
-                                          handleInputChange_CostCenter(e, i);
-                                        }}
-                                      />
-                                    </div>
+                                    <Button
+                                      variant="contained"
+                                      onClick={() => handleAddClick(i)}
+                                      size="small"
+                                    >
+                                      {" "}
+                                      Add{" "}
+                                    </Button>
                                   </div>
+                                  <Box
+                                   
+                                    sx={{
+                                      "& > :not(style)": { m: 1, width: "20%" },
+                                    }}
 
-                                  <div className="row">
-                                    <div style={{ paddingRight: "10px" }}>
-                                      {inputList.length !== 1 && (
-                                        <Button
-                                          variant="contained"
-                                          color="warning"
-                                          onClick={() => handleRemoveClick(i)}
-                                          size="small"
+                                  >
+
+                                    <TextField
+                                      size="small"
+                                      color="warning"
+                                      variant="standard"
+                                      label="ลำดับ"
+                                      value={i + 1}
+                                      style={{ width: "5%" }}
+                                      focused
+                                    />
+
+                                    <TextField
+                                      required
+                                      size="small"
+                                      color="info"
+                                      variant="standard"
+                                      label="รายการ"
+                                      name="detail_list_job"
+                                      value={x.detail_list_job}
+                                      style={{ width: "30%" }}
+                                      onChange={(e) => handleInputChange(e, i)}
+                                    />
+                                    <TextField
+                                      required
+                                      style={{ width: "10%" }}
+                                      size="small"
+                                      color="info"
+                                      variant="standard"
+                                      label="จำนวน"
+                                      type="number"
+                                      name="detail_qty_job"
+                                      value={x.detail_qty_job}
+                                      onChange={(e) => handleInputChange(e, i)}
+                                    />
+                                    <TextField
+                                      required
+                                      style={{ width: "10%" }}
+                                      size="small"
+                                      color="info"
+                                      variant="standard"
+                                      label="ราคาต่อหน่วย"
+                                      type="number"
+                                      name="detail_price_job"
+                                      value={x.detail_price_job}
+                                      onChange={(e) => handleInputChange(e, i)}
+                                    />
+                                    <TextField
+
+                                      style={{ width: "10%" }}
+                                      color="info"
+                                      variant="standard"
+                                      label="รวม"
+                                      type="number"
+                                      size="small"
+                                      name="detail_sum_job"
+                                      value={x.detail_sum_job}
+                                      InputProps={{
+                                        readOnly: true,
+                                      }}
+                                    />
+
+                                    <TextField
+                                      style={{ width: "5%" }}
+                                      color="info"
+                                      variant="standard"
+                                      label="Price per unit"
+                                      size="small"
+                                      name="detail_Priceperunit_job"
+                                      value={x.detail_Priceperunit_job}
+                                      onChange={(e) => handleInputChange(e, i)}
+                                    />
+                                    <TextField
+                                      id="standard-select-currency"
+                                      select
+                                      style={{ width: "6%" }}
+                                      label="ACCT"
+                                      value={x.detail_ACCT_job}
+                                      onChange={(e) => {
+                                        handleInputChange_ACCT(e, i);
+                                      }}
+                                      variant="standard"
+                                      size="small"
+                                      color="warning"
+                                      name="detail_ACCT_job"
+                                    >
+                                      {ACCT.map((option) => (
+                                        <MenuItem
+                                          key={option.value}
+                                          value={option.value}
                                         >
-                                          Remove
-                                        </Button>
-                                      )}
+                                          {option.label}
+                                        </MenuItem>
+                                      ))}
+                                    </TextField>
+                                    <TextField
+                                      style={{ width: "15%" }}
+                                      color="info"
+                                      variant="standard"
+                                      label="Material"
+                                      size="small"
+                                      name="detail_material_job"
+                                      value={x.detail_material_job}
+                                      onChange={(e) => handleInputChange(e, i)}
+                                    />
+
+                                    <div
+                                      className="row"
+                                      style={{ width: "100%" }}
+                                    >
+                                      <div className="col-2">
+                                      <label>สกุลเงิน</label>
+                                        <Select
+                                          size="small"
+                                          placeholder="THB"
+                                          class="form-control form-control-sm "
+                                          options={currData}
+                                          name="detail_CURR_job"
+                                          onChange={(e) => {
+                                            handleInputChange_CURR(e, i);
+                                          }}
+                                        />
+                                      </div>
+
+                                      <div className="col-2">
+                                      <label>หน่วย</label>
+                                        <Select
+                                          size="small"
+                                          placeholder="each"
+                                          class="form-control form-control-sm"
+                                          options={data_sap_filter}
+                                          name="detail_unit_job"
+                                          onChange={(e) => {
+                                            handleInputChange_select(e, i);
+                                          }}
+                                        />
+                                      </div>
+
+                                      <div className="col-2">
+                                      <label>GL</label>
+                                        <Select
+                                          size="small"
+                                          placeholder={x.detail_GL_label}
+                                          class="form-control form-control-sm "
+                                          options={glData}
+                                          name="detail_GL_job"
+                                          onChange={(e) => {
+                                            handleInputChange_GL(e, i);
+                                          }}
+                                        />
+                                      </div>
+
+                                      <div className="col-3">
+                                      <label>MatGroup</label>
+                                        <Select
+                                          size="small"
+                                          placeholder={x.detail_MatGroup_label}
+                                          class="form-control form-control-sm "
+                                          options={matgroupData}
+                                          name="detail_MatGroup_job"
+                                          defaultValue=""
+                                          onChange={(e) => {
+                                            handleInputChange_Matgroup(e, i);
+                                          }}
+                                        />
+                                      </div>
+                                      <div className="col-3">
+                                      <label>COST CENTER</label>
+                                        <Select
+                                          size="small"
+                                          placeholder="COST CENTER"
+                                          class="form-control form-control-sm "
+                                          options={CostCenter}
+                                          name="detail_CostCenter_job"
+                                          onChange={(e) => {
+                                            handleInputChange_CostCenter(e, i);
+                                          }}
+                                        />
+                                      </div>
                                     </div>
-                                  </div>
-                                  <hr style={{ width: "100%" }} />
-                                </Box>
+
+                                    <div className="row">
+                                      <div style={{ paddingRight: "10px" }}>
+                                        {inputList.length !== 1 && (
+                                          <Button
+                                            variant="contained"
+                                            color="warning"
+                                            onClick={() => handleRemoveClick(i)}
+                                            size="small"
+                                          >
+                                            Remove
+                                          </Button>
+                                        )}
+                                      </div>
+                                    </div>
+                                    <hr style={{ width: "100%" }} />
+
+                                    <div>
+                                      <Button
+                                        variant="contained"
+
+                                        size="small"
+                                        type="submit"
+                                        style={{ width: "33%" }}
+                                        fullWidth
+                                        color="success"
+                                      >
+                                        เพิ่มข้อมูล
+                                      </Button>
+                                    </div>
+                                  </Box>
+                                </Form>
                               </CardBody>
                             </Card>
                           );
@@ -1338,18 +1363,7 @@ export default function Check_job(props) {
                       </div>
                       <br />
 
-                      <div>
-                        <Button
-                          variant="contained"
-                          onClick={add_detail_job}
-                          size="small"
-                          style={{ width: "33%" }}
-                          fullWidth
-                          color="success"
-                        >
-                          เพิ่มข้อมูล
-                        </Button>
-                      </div>
+
                       {/* <div style={{ marginTop: 20 }}>{JSON.stringify(inputList)}</div> */}
                     </div>
                   </Box>
