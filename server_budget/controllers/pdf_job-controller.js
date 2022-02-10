@@ -59,9 +59,9 @@ const pdf_budget = (req, res, next) => {
         }
 
         if (result[0].MD_sig === "") {
-          MD_sig = { image: bg_white, width: 70, height: 70 };
+          MD_sig = { image: bg_white, width: 70, height: 70 , colSpan:2};
         } else {
-          MD_sig = { image: result[0].MD_sig, width: 70, height: 70 };
+          MD_sig = { image: result[0].MD_sig, width: 70, height: 70 , colSpan:2};
         }
         db.query(
           "select * from budget_detail_job where job_run_id = '" + id + "'",
@@ -71,8 +71,9 @@ const pdf_budget = (req, res, next) => {
               console.log(err);
             } else {
               let data_row = [];
-              result.forEach((data) => {
+              result.forEach((data,key) => {
                 data_row.push({
+                  ลำดับ : key+1 ,
                   รายการ: data.detail_list_job,
                   จำนวน: data.detail_qty_job
                     .toString()
@@ -80,7 +81,7 @@ const pdf_budget = (req, res, next) => {
                   ราคาต่อหน่วย: data.detail_price_job
                     .toString()
                     .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,"),
-                    หน่วยนับ : data.detail_unit_label , 
+                  หน่วยนับ: data.detail_unit_label,
                   รวม: data.detail_sum_job
                     .toString()
                     .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,"),
@@ -108,7 +109,7 @@ const pdf_budget = (req, res, next) => {
                 return {
                   margin: [70, 0, 30, 0],
                   table: {
-                    widths: ["45%", "15%", "15%","15%", "15%"],
+                    widths: ["10%","45%", "15%", "15%", "15%", "15%"],
                     paddingTop: 20,
 
                     body: buildTableBody(data, columns),
@@ -134,7 +135,7 @@ const pdf_budget = (req, res, next) => {
                       {
                         text: [
                           {
-                             text: factory + "\n",
+                            text: factory + "\n",
                             bold: true,
                           },
                           "สำนักงานใหญ่: 88/8-9,99/9 หมูที่ 2 ถนนลาดบัวหลวง-ไม้ตรา\nตำบลลาดบัวหลวง อำเภอลาดบัวหลวง พระนครศรีอยุธยา 13230\nโทร. +663 537 8216-8 แฟกซ์. +663 528 0494\nwww.rwwwire.com",
@@ -188,7 +189,7 @@ const pdf_budget = (req, res, next) => {
                     margin: [30, 0, 0, 0],
                   },
                   {
-                    text: "\nสำเนาเรื่อง : " + learn_job_copy,
+                    text: "\nสำเนาเรื่อน : " + learn_job_copy,
                     fontSize: 12,
                     margin: [30, 0, 0, 0],
                   },
@@ -205,28 +206,39 @@ const pdf_budget = (req, res, next) => {
                   {
                     text: "\n",
                   },
-                  table(data_row, ["รายการ", "ราคาต่อหน่วย", "จำนวน", "หน่วยนับ", "รวม"]),
+                  table(data_row, ["ลำดับ","รายการ", "ราคาต่อหน่วย", "จำนวน", "หน่วยนับ", "รวม"]),
                   {
                     text: "\n",
                   },
-                  
-                  {
-                  
-                    paddingTop: 50,
-                    text: "\n\n\nขอแสแดงความนับถือ",
-                    fontSize: 12,
-                    alignment: "center",
 
-                  },
+                  // {
+                    
+                  //   margin: [125, 0, 0, 0],
+                  //   alignment: "center",
+                  //   layout: "noBorders",
+                  //   style: "tableExample",
+                  //   table: {
+                  //     widths: [250],
+                  //     body: [
+                  //       ["\n\nจึงเรียนมาเพื่อโปรดพิจาณาอนุมัติเรื่อง " + job_project_name + "\n\nขอแสแดงความนับถือ"],
+
+                  //     ],
+                  //   },
+                  // },
                   {
-                  
+                    unbreakable: true,
                     margin: [0, 0, 0, 0],
                     alignment: "center",
                     layout: "noBorders",
                     style: "tableExample",
+                    text: "\nขอแสแดงความนับถือ",
+                    fontSize: 12,
+                    // eslint-disable-next-line no-dupe-keys
+                    alignment: "center",
                     table: {
                       widths: [250, 250],
                       body: [
+                        [{text:"\n\nจึงเรียนมาเพื่อโปรดพิจาณาอนุมัติเรื่อง " + job_project_name + "\n\nขอแสแดงความนับถือ",colSpan:2},''],
                         [mg_sig, dr_sig],
                         ["ผู้จัดการ", "ผู้อำนวยการ"],
                         [
@@ -240,24 +252,29 @@ const pdf_budget = (req, res, next) => {
                           "ผู้ช่วยกรรมการผู้จัดการบริษัท ส่วนงานสนับสนุน",
                         ],
                         ["คุณ ประทีป สุนมา", "คุณ สนธยา โสดแก้ว"],
+                        
+                        [ MD_sig , ''],
+                        [{text:"กรรมการผู้จัดการบริษัท",colSpan:2},''],
+                        [{text:"คุณวิศรุต รังษีสิงห์พิพัฒน์",colSpan:2},''],
                       ],
                     },
+
                   },
-                  {
-                    unbreakable: true,
-                    margin: [125, 0, 0, 0],
-                    alignment: "center",
-                    layout: "noBorders",
-                    style: "tableExample",
-                    table: {
-                      widths: [250],
-                      body: [
-                        [MD_sig],
-                        ["กรรมการผู้จัดการบริษัท"],
-                        ["คุณวิศรุต รังษีสิงห์พิพัฒน์"],
-                      ],
-                    },
-                  },
+                  // {
+
+                  //   margin: [125, 0, 0, 0],
+                  //   alignment: "center",
+                  //   layout: "noBorders",
+                  //   style: "tableExample",
+                  //   table: {
+                  //     widths: [250],
+                  //     body: [
+                  //       [MD_sig],
+                  //       ["กรรมการผู้จัดการบริษัท"],
+                  //       ["คุณวิศรุต รังษีสิงห์พิพัฒน์"],
+                  //     ],
+                  //   },
+                  // },
                 ],
 
                 styles: {

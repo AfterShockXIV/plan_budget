@@ -47,6 +47,7 @@ const pdf_budget = (req, res, next) => {
         if (result[0].AMD_sig === "") {
           AMD_sig = { image: bg_white, width: 70, height: 70 };
         } else {
+          // eslint-disable-next-line no-unused-vars
           AMD_sig = { image: result[0].AMD_sig, width: 70, height: 70 };
         }
 
@@ -57,9 +58,9 @@ const pdf_budget = (req, res, next) => {
         }
 
         if (result[0].MD_sig === "") {
-          MD_sig = { image: bg_white, width: 70, height: 70 };
+          MD_sig = { image: bg_white, width: 70, height: 70 , colSpan:2};
         } else {
-          MD_sig = { image: result[0].MD_sig, width: 70, height: 70 };
+          MD_sig = { image: result[0].MD_sig, width: 70, height: 70 , colSpan:2};
         }
         db.query(
           "select * from budget_detail_job where job_run_id = '" + id + "'",
@@ -69,8 +70,9 @@ const pdf_budget = (req, res, next) => {
               console.log(err);
             } else {
               let data_row = [];
-              result.forEach((data) => {
+              result.forEach((data,key) => {
                 data_row.push({
+                  ลำดับ : key+1 ,
                   รายการ: data.detail_list_job,
                   จำนวน: data.detail_qty_job
                     .toString()
@@ -186,7 +188,7 @@ const pdf_budget = (req, res, next) => {
                     margin: [30, 0, 0, 0],
                   },
                   {
-                    text: "\nสำเนาเรื่อง : " + learn_job_copy,
+                    text: "\nสำเนาเรื่อน : " + learn_job_copy,
                     fontSize: 12,
                     margin: [30, 0, 0, 0],
                   },
@@ -203,17 +205,17 @@ const pdf_budget = (req, res, next) => {
                   {
                     text: "\n",
                   },
-                  table(data_row, ["รายการ", "ราคาต่อหน่วย", "จำนวน", "หน่วยนับ", "รวม"]),
+                  table(data_row, ["ลำดับ","รายการ", "ราคาต่อหน่วย", "จำนวน", "หน่วยนับ", "รวม"]),
                   {
                     text: "\n",
                   },
-                  {
-                    unbreakable: true,
-                    paddingTop: 50,
-                    text: "\n\n\nขอแสแดงความนับถือ",
-                    fontSize: 12,
-                    alignment: "center",
-                  },
+                  // {
+                  //   unbreakable: true,
+                  //   paddingTop: 50,
+                  //   text: "\n\n\nขอแสแดงความนับถือ",
+                  //   fontSize: 12,
+                  //   alignment: "center",
+                  // },
                   {
                     unbreakable: true,
                     margin: [0, 0, 0, 0],
@@ -224,45 +226,55 @@ const pdf_budget = (req, res, next) => {
                     table: {
                       widths: [250, 250],
                       body: [
+                        [{text:"\n\nจึงเรียนมาเพื่อโปรดพิจาณาอนุมัติเรื่อง " + job_project_name + "\n\nขอแสแดงความนับถือ",colSpan:2},''],
                         [mg_sig, dr_sig],
                         ["ผู้จัดการ", "ผู้อำนวยการ"],
                         [
                           "ฝ่ายงาน " + job_department,
                           "ฝ่ายงาน " + job_department,
                         ],
+                        ['',AMD2_sig],
+                        ['',"ผู้ช่วยกรรมการผู้จัดการบริษัท ส่วนงานสนับสนุน"],
+                        ['',"คุณ สนธยา โสดแก้ว"],
+
+                        [ MD_sig , ''],
+                        [{text:"กรรมการผู้จัดการบริษัท",colSpan:2},''],
+                        [{text:"คุณวิศรุต รังษีสิงห์พิพัฒน์",colSpan:2},''],
                       ],
                     },
                   },
-                  {
-                    unbreakable: true,
-                    margin: [0, 0, 0, 0],
-                    alignment: "center",
-                    layout: "noBorders",
-                    style: "tableExample",
-                    table: {
-                      widths: [250],
-                      body: [
-                        [AMD2_sig],
-                        ["ผู้ช่วยกรรมการผู้จัดการบริษัท ส่วนงานสนับสนุน"],
-                        ["คุณ สนธยา โสดแก้ว"],
-                      ],
-                    },
-                  },
-                  {
-                    unbreakable: true,
-                    margin: [125, 0, 0, 0],
-                    alignment: "center",
-                    layout: "noBorders",
-                    style: "tableExample",
-                    table: {
-                      widths: [250],
-                      body: [
-                        [MD_sig],
-                        ["กรรมการผู้จัดการบริษัท"],
-                        ["คุณวิศรุต รังษีสิงห์พิพัฒน์"],
-                      ],
-                    },
-                  },
+                  // {
+                  //   unbreakable: true,
+                  //   margin: [0, 0, 0, 0],
+                  //   alignment: "center",
+                  //   layout: "noBorders",
+                  //   style: "tableExample",
+                  //   table: {
+                  //     widths: [250],
+                  //     body: [
+                  //       [AMD2_sig],
+                  //       ["ผู้ช่วยกรรมการผู้จัดการบริษัท ส่วนงานสนับสนุน"],
+                  //       ["คุณ สนธยา โสดแก้ว"],
+                        
+                  //     ],
+                  //   },
+                  // },
+
+                  // {
+                  //   unbreakable: true,
+                  //   margin: [125, 0, 0, 0],
+                  //   alignment: "center",
+                  //   layout: "noBorders",
+                  //   style: "tableExample",
+                  //   table: {
+                  //     widths: [250],
+                  //     body: [
+                  //       [MD_sig],
+                  //       ["กรรมการผู้จัดการบริษัท"],
+                  //       ["คุณวิศรุต รังษีสิงห์พิพัฒน์"],
+                  //     ],
+                  //   },
+                  // },
                 ],
 
                 styles: {

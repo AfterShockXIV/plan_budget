@@ -1,299 +1,319 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Budget : <%= department %></title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-      crossorigin="anonymous"
-    ></script>
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-      crossorigin="anonymous"
-    />
 
-    <script
-      src="https://code.jquery.com/jquery-3.5.1.js"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"
-      crossorigin="anonymous"
-    ></script>
-  </head>
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css"
-    crossorigin="anonymous"
-  />
-  <link
-    rel="stylesheet"
-    href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css"
-    crossorigin="anonymous"
-  />
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Budget : <%= department %>
+  </title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
 
-  <script>
-    $(document).ready(function () {
-      $("#example").DataTable();
-    });
-  </script>
+  <script src="https://code.jquery.com/jquery-3.5.1.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js" crossorigin="anonymous"></script>
+</head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css"
+  crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css"
+  crossorigin="anonymous" />
 
-  <style>
-    @import url("https://fonts.googleapis.com/css2?family=Prompt&display=swap");
 
-    body {
-      /* font-size: 13px; */
-      font-family: "Prompt", sans-serif;
-    }
-  </style>
-  <style>
-    .bg {
-      text-align: center;
-      border: 2px solid;
-      border-radius: 5px;
-      margin: 2% 30% 0 35%;
-      padding: 2% 3% 2% 3%;
-      width: 30%;
-      font-size: 30px;
-      /* box-shadow: 0 30px 50px rgba(0, 0, 0, 0.287); */
-      font-family: "Prompt", sans-serif;
-      /* background-color: rgb(255, 255, 255); */
-      /* background-color: #414141; */
-      /* background: -webkit-gradient(linear, left top, right top, from(sandybrown),color-stop(30%, #ff8800), to(#fff)); */
-      background-color: #ff8800;
-      color: #fff;
-    }
 
-    .bg1 {
-      border: 2px solid #fff;
-      border-radius: 10px;
-      margin: -20px auto 5% 15%;
-      padding: 0px 3% 1% 3%;
-      text-align: left;
-      width: 70%;
-      height: auto;
-      box-shadow: 0 30px 50px rgba(0, 0, 0, 0.287);
-      font-family: "Prompt", sans-serif;
-      background-color: rgba(247, 242, 242, 0.671);
-      display: inline-block;
-    }
-    .wrapper {
-      position: relative;
-      width: 100%;
-      height: 200px;
-      -moz-user-select: none;
-      -webkit-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-      /* margin-left: 30%; */
-    }
-    .signature-pad {
-      left: 0;
-      top: 0;
-      width: 60%;
-      height: 200px;
-      background-color: rgb(255, 255, 255);
-      border: 1px solid rgb(0, 0, 0);
-    }
-    label {
-      /* display:flex; */
-      /* justify-content:center; */
-      padding-top: 5px;
-      margin-left: 10%;
-      margin-top: 10px;
-      font-size: 17px;
-      text-align: center !important;
-    }
-    td {
+
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Prompt&display=swap");
+
+  body {
+    /* font-size: 13px; */
+    font-family: "Prompt", sans-serif;
+
+  }
+</style>
+<style>
+  .bg {
+    text-align: center;
+    border-radius: 5px;
+    font-size: 30px;
+    font-weight: bold;
+    /* box-shadow: 0 30px 50px rgba(0, 0, 0, 0.287); */
+    font-family: "Prompt", sans-serif;
+    /* background-color: rgb(255, 255, 255); */
+    /* background-color: #414141; */
+    /* background: -webkit-gradient(linear, left top, right top, from(sandybrown),color-stop(30%, #ff8800), to(#fff)); */
+    /* background-color: #cfcfcf; */
+    color: #fff;
+    background-color: aliceblue;
+    width: 100%;
+    padding: 2% 0 2% 0;
+    /* background-color: #878787; */
+    background: -webkit-gradient(linear, left top, right top, from(#878787), color-stop(40%, #777777), to(#ededed));
+    border-radius: 20px;
+
+  }
+
+  .bg1 {
+    border: 2px solid #fff;
+    border-radius: 10px;
+    margin-left: 5%;
+    /* padding: 5% 3% 1% 3%; */
+    text-align: left;
+    width: 90%;
+    height: auto;
+    font-family: "Prompt", sans-serif;
+    /* background-color: rgba(247, 242, 242, 0.671); */
+    /* background-color: cornsilk ; */
+    display: inline-block;
+    margin-top: 3%;
+    margin-right: 5%;
+    padding-bottom: 5%;
+    background-color: rgba(255, 255, 255, 0.836);
+    box-shadow: 0 30px 50px rgba(0, 0, 0, .2);
+    border-radius: 20px;
+  }
+
+  .wrapper {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    /* margin-left: 30%; */
+  }
+
+  .signature-pad {
+    left: 0;
+    top: 0;
+    width: 60%;
+    height: 200px;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(0, 0, 0);
+
+    margin-bottom: 1%;
+  }
+
+  label {
+    /* display:flex; */
+    /* justify-content:center; */
+    padding-top: 5px;
+    margin-left: 10%;
+    margin-top: 20px;
+    margin-right: 6%;
+    font-size: 17px;
+    /* text-align: center !important; */
+
+  }
+
+  /* td {
       padding-top: 5px;
       padding-left: 15%;
       margin-left: 50% !important;
       margin-bottom: 3%;
       margin-top: 4%;
       font-size: 17px;
-    }
+    } */
 
-    hr {
-      border: 2px solid #23395d;
-      /* border-color: #000 !important; */
-    }
-
-    .input {
+  /* .input {
       border-radius: 10px;
       width: 70%;
       border: 1px solid #cfcfcf;
       padding: 10px 0 10px 10px;
       margin-top: 3%;
-    }
-    /* body{
-      background-image: url("/assets/bg/bg-jot.png");
-      background-repeat : no-repeat; 
- background-position :  top left;   
- background-attachment: fixed; 
-  background-size: 100%;
     } */
-  </style>
-  <script src="https://cdn.jsdelivr.net/npm/signature_pad@2.3.2/dist/signature_pad.min.js"></script>
 
-  <body style="background-color: #e0e0de">
-    <div><h4 class="bg">Approve Budget</h4></div>
-    <div class="bg1" style="padding-top: 30px">
-      <!-- <div class="col-1"><label></label> <br /></div> -->
-      <label>ฝ่ายงาน : <%= department %> </label>
-      <label>เรียน : <%= learn_job %></label>
-      <label>สำเนาเรียน : <%= learn_job_copy %></label><br />
-      <label>เรื่อง : <%= project_name %></label><br />
+  .dtHorizontalExampleWrapper {
+    max-width: 100%;
 
-      <label>รายละเอียด : <%= detail_job %></label> <br /><br />
+  }
 
-      <label>แผนงบปี : <%= job_project_year %></label>
-      <label>ระยะเวลา : <%= job_time %></label>
-      <label style="padding-right: 100px"
-        >ยอด : <%= job_project_price.toString()
-        .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,") %></label
-      >
-      <button
-        type="button"
-        class="btn btn-sm btn-warning"
-        data-toggle="modal"
-        data-target=".bd-example-modal-lg"
-      >
-        ดูรายการ
+  #dtHorizontalExample th,
+  td,
+  tr {
+    white-space: nowrap;
+  }
+
+  /* table.dataTable thead .sorting:after,
+  table.dataTable thead .sorting:before,
+  table.dataTable thead .sorting_asc:after,
+  table.dataTable thead .sorting_asc:before,
+  table.dataTable thead .sorting_asc_disabled:after,
+  table.dataTable thead .sorting_asc_disabled:before,
+  table.dataTable thead .sorting_desc:after,
+  table.dataTable thead .sorting_desc:before,
+  table.dataTable thead .sorting_desc_disabled:after,
+  table.dataTable thead .sorting_desc_disabled:before {
+  bottom: .5em;
+  } */
+
+  .scroll_table {
+    width: 100%;
+    overflow-x: scroll;
+    /* white-space: nowrap; */
+  }
+
+  body {
+    background-image: url("/assets/bg/bg-jot.png");
+    background-repeat: no-repeat;
+    background-position: top left;
+    background-attachment: fixed;
+    background-size: 200%;
+    height: auto;
+  }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/signature_pad@2.3.2/dist/signature_pad.min.js"></script>
+<!-- style="background-color: #e0e0de" -->
+<script>
+  $(document).ready(function () {
+    $('#dtHorizontalExample').DataTable({
+
+    });
+    $('.dataTables_length').addClass('bs-select');
+  });
+</script>
+
+<body>
+
+  <div class="bg1">
+
+
+    <!-- <div class="col-1"><label></label> <br /></div> -->
+    <div class="bg">Approve Budget</div>
+    <label>ฝ่ายงาน : <%= department %> </label><br />
+    <label>เรียน : <%= learn_job %></label><br />
+    <label>สำเนาเรียน : <%= learn_job_copy %></label><br />
+    <label>เรื่อง : <%= project_name %></label><br />
+    <label>รายละเอียด : <%= detail_job %></label> <br /><br />
+    <button type="button" data-toggle="modal" data-target=".bd-example-modal-lg"
+      style="background-color: #01a6ba;  border-radius: 5px; border-color: #01a6ba; padding: 5px 15px 5px 15px; margin-left: 10%; color: #ffffff;"
+      class="btn btn-success">
+      ดูรายการ
+    </button>
+    <a href='<%= pdf %>'>
+      <button type="button"
+        style="background-color: #01ba20;  border-radius: 5px; border-color: #01a6ba; padding: 5px 15px 5px 15px; margin-left: 3%; color: #ffffff;"
+        class="btn btn-success">
+        ดู Memo PDF
       </button>
+    </a>
+    <br />
 
-      <hr />
+    <label>แผนงบปี : <%= job_project_year %></label><br />
+    <label>ระยะเวลา : <%= job_time %> &nbsp;เดือน</label><br />
+    <label style="padding-right: 100px">ยอด : <%= job_project_price.toString() .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,"
+        ) %></label>
 
-      <div style="text-align: center">
-        <span style="font-weight: bold" class="text-center"
-          >กรรมการผู้จัดการบริษัท</span
-        ><br />
-        <span class="text-center">คุณ วิศรุต รังษีสิงห์พิพัฒน์</span
-        ><br /><br />
+    <hr style="width: 80%; margin-left: 10%; height: 2px; margin-bottom: 2%; margin-top: 1%;" />
 
-        <canvas id="signature-pad" name="canvas" class="signature-pad"></canvas>
-        <br />
-        <div style="text-align: center">
-          <button
-            type="button"
-            style="font-size: 10px; text-align: left"
-            class="btn btn-secondary"
-            id="clear"
-          >
-            Clear
-          </button>
-        </div>
-        <br />
+    <div style="text-align: center">
+      <u style="font-weight: bold; font-size: 16px;" class="text-center">กรรมการผู้จัดการบริษัท</u><br />
+      <span class="text-center" style="font-size: 17px;">คุณ วิศรุต รังษีสิงห์พิพัฒน์</span><br /><br />
 
-        <span class="text-center">( คุณวิศรุต รังษีสิงห์พิพัฒน์ )</span><br />
-        <span class="text-center">ตำแหน่ง Managing Director</span><br />
-        <span class="text-center">ผู้อนุมัติ</span><br />
-      </div>
+      <canvas id="signature-pad" name="canvas" class="signature-pad"></canvas>
       <br />
-      <form action="/post_sig_MD" method="post">
-        <div class="text-center">
-          <input hidden type="text" id="demo" name="MD_sig" value="" />
-          <input
-            hidden
-            type="text"
-            value="<%= job_run_id %>"
-            name="job_run_id"
-          />
-          <button
-            type="submit"
-            style="border-radius: 10px"
-            class="btn btn-success"
-            id="save-jpeg"
-          >
-            ตรวจสอบเรียบร้อย
-          </button>
-        </div>
-      </form>
-    </div>
-    <!-- Modal -->
 
-    <div
-      class="modal fade bd-example-modal-lg"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="myLargeModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-body" style="zoom: 75%">
-            <h4>
-              รวมยอด : <%= job_project_price.toString()
-              .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,") %>
-            </h4>
-            <table id="example" class="table table-striped" style="width: 100%">
+      <span class="text-center">( คุณวิศรุต รังษีสิงห์พิพัฒน์ )</span><br />
+      <span class="text-center">ตำแหน่ง Managing Director</span><br />
+      <span class="text-center">ผู้อนุมัติ</span><br />
+    </div>
+    <br />
+    <form action="/post_sig_MD" method="post">
+      <div class="text-center">
+        <input hidden type="text" id="demo" name="MD_sig" value="" />
+        <input hidden type="text" value="<%= job_run_id %>" name="job_run_id" />
+
+        <button type="button"
+          style="border-radius: 10px; background-color: red; color: #fff; border-color: red; padding: 5px 40px 5px 40px"
+          class="btn btn-secondary" id="clear">
+          Clear
+        </button>
+
+        <button type="submit"
+          style="border-radius: 10px; background-color: #198754; color: #fff; border-color:#198754; padding: 5px 10px 5px 10px"
+          class="btn btn-success" id="save-jpeg">
+          ตรวจสอบเรียบร้อย
+        </button>
+      </div>
+    </form>
+  </div>
+
+
+  <!-- Modal -->
+
+  <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="width: 100;">
+      <div class="modal-content" style="width: 100%;">
+
+        <div class="modal-body" style="zoom:75%; width: 100%;">
+          <h4>
+            รวมยอด : <%= job_project_price.toString() .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1," ) %>
+          </h4>
+
+          <div class="scroll_table">
+            <table id="dtHorizontalExample" class="table table-striped table-bordered table-md " cellspacing="0">
               <thead>
                 <tr>
-                  <th style="width: 30%">รายการ</th>
-                  <th style="width: 15%">จำนวน</th>
-                  <th style="width: 20%">ราคาต่อหน่วย</th>
-                  <th style="width: 15%">หน่วยนับ</th>
-                  <th style="width: 20%">รวม</th>
-                  <th style="width: 20%">สกุลเงิน</th>
+                  <th style="text-align: center;">ลำดับ</th>
+                  <th style="text-align: center;">รายการ</th>
+                  <th style="width:100%; text-align: center;">จำนวน</th>
+                  <th style="width:100%; text-align: center;">ราคาต่อหน่วย</th>
+                  <th style="width:100%; text-align: center;">หน่วยนับ</th>
+                  <th style="width:100%; text-align: center;">รวม</th>
+                  <th style="width:100%; text-align: center;">สกุลเงิน</th>
                 </tr>
               </thead>
 
               <tbody>
                 <% all_detail.forEach((data, index)=> { %>
-                <tr>
-                  <td style="width: 30%"><%= data.detail_list_job %></td>
-                  <td style="width: 15%; text-align: right">
-                    <%= data.detail_qty_job.toString()
-                    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,") %>
-                  </td>
-                  <td style="width: 15%; text-align: right">
-                    <%= data.detail_price_job.toString()
-                    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,") %>
-                  </td>
-                  <td style="width: 15%">
-                    <%= data.detail_unit_job.toString()
-                    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,") %>
-                  </td>
-                  <td style="width: 15%; text-align: right">
-                    <%= data.detail_sum_job.toString()
-                    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,") %>
-                  </td>
-                  <td style="width: 10%"><%= data.detail_CURR_job %></td>
-                </tr>
-                <% }) %>
+                  <tr>
+                    <td>
+                      <%= index+1 %>
+                    </td>
+                    <td style="width: 30%">
+                      <%= data.detail_list_job %>
+                    </td>
+                    <td style="width: 15%; text-align: right">
+                      <%= data.detail_qty_job.toString() .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1," ) %>
+                    </td>
+                    <td style="width: 15%; text-align: right">
+                      <%= data.detail_price_job.toString() .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1," ) %>
+                    </td>
+                    <td style="width: 15%">
+                      <%= data.detail_unit_job.toString() .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1," ) %>
+                    </td>
+                    <td style="width: 15%; text-align: right">
+                      <%= data.detail_sum_job.toString() .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1," ) %>
+                    </td>
+                    <td style="width: 10%">
+                      <%= data.detail_CURR_job %>
+                    </td>
+                  </tr>
+                  <% }) %>
               </tbody>
             </table>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- Modal -->
-  </body>
+  <!-- Modal -->
+</body>
+
 </html>
 
 <script type="text/javascript">
